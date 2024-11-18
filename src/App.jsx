@@ -18,14 +18,23 @@ function App() {
     setNewArticle('')
   }
   function deleteArticle(index) {
-    setArticles(articles.filter((article, index) => index !== index));
+    setArticles(articles.filter((article, i) => index !== i));
   }
+
+  const editArticle = (index) => {
+    const newTitle = prompt('Enter new title', articles[index]);
+    if (newTitle) {
+      const updatedArticles = [...articles];
+      updatedArticles[index] = newTitle;
+      setArticles(updatedArticles);
+    }
+  };
+
 
   return (
     <div className="container mt-5">
       <h1>Blog</h1>
 
-      {/* Form per aggiungere articoli */}
       <form onSubmit={addArticle}>
         <div className="mb-3">
           <label htmlFor="article" className="form-label">Article</label>
@@ -50,16 +59,16 @@ function App() {
       </form>
 
 
-      <ul className="list-group">
+      <ul className="list-group ">
         {articles.map((article, index) => (
-          <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+          <li key={index}>
             {article}
-            <button
-              className="btn btn-sm btn-danger"
-              onClick={() => deleteArticle(index)}
-            >
-              Delete
-            </button>
+
+            <div className=' d-flex justify-content-end'>
+              <button className='btn btn-sm btn-success' onClick={() => editArticle(index)}><i className="bi bi-pencil-square"></i></button>
+              <button className='btn btn-sm btn-danger' onClick={() => deleteArticle(index)}><i className="bi bi-trash2-fill"></i></button>
+            </div>
+
           </li>
         ))}
       </ul>
