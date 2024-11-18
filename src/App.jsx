@@ -20,14 +20,24 @@ function App() {
     setArticles(articles.filter((article, i) => index !== i));
   }
 
-  const editArticle = (index) => {
-    const newTitle = prompt('Enter new title', articles[index]);
+  function editTitle(index) {
+    const newTitle = prompt('Enter new title', articles[index].title);
     if (newTitle) {
       const updatedArticles = [...articles];
-      updatedArticles[index] = newTitle;
+      updatedArticles[index].title = newTitle;
       setArticles(updatedArticles);
     }
-  };
+  }
+
+  function changeStatus(index) {
+    const newStatus = prompt('Enter new status', articles[index].status)
+
+    if (newStatus) {
+      const updateStatus = [...articles];
+      updateStatus[index].title = newStatus;
+      setArticles(updateStatus)
+    }
+  }
 
 
   return (
@@ -61,10 +71,18 @@ function App() {
         {articles.map((article, index) => (
           <li key={index}>
             <h5> Title : {article.title}</h5>
-            <p>State: {article.status}</p>
+            <p>State: {article.status}
+
+              <button
+                className="btn btn-sm btn-warning"
+                onClick={() => changeStatus(index)}
+              >
+                Change Status
+              </button>
+            </p>
 
             <div className=' d-flex justify-content-end'>
-              <button className='btn btn-sm btn-success' onClick={() => editArticle(index)}><i className="bi bi-pencil-square"></i></button>
+              <button className='btn btn-sm btn-success' onClick={() => editTitle(index)}><i className="bi bi-pencil-square"></i></button>
               <button className='btn btn-sm btn-danger' onClick={() => deleteArticle(index)}><i className="bi bi-trash2-fill"></i></button>
             </div>
 
