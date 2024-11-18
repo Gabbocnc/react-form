@@ -34,7 +34,7 @@ function App() {
 
     if (newStatus) {
       const updateStatus = [...articles];
-      updateStatus[index].title = newStatus;
+      updateStatus[index].status = newStatus;
       setArticles(updateStatus)
     }
   }
@@ -67,11 +67,11 @@ function App() {
         </div>
       </form>
 
-      <ul className="list-group  list-unstyled  ">
+      <ul className="list-group  list-unstyled ">
         {articles.map((article, index) => (
           <li key={index}>
             <h5> Title : {article.title}</h5>
-            <p>State: {article.status}
+            <p> State: {article.status}
 
               <button
                 className="btn btn-sm btn-warning"
