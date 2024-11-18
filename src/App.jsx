@@ -17,6 +17,9 @@ function App() {
     ])
     setNewArticle('')
   }
+  function deleteArticle(index) {
+    setArticles(articles.filter((article, index) => index !== index));
+  }
 
   return (
     <div className="container mt-5">
