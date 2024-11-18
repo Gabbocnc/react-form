@@ -9,14 +9,13 @@ function App() {
 
 
   function addArticle(e) {
-    e.preventDefault()
+    e.preventDefault();
+    setArticles([...articles, { title: newArticle, status: 'published' }]);
+    setNewArticle('');
 
-    setArticles([
-      ...articles,
-      newArticle
-    ])
-    setNewArticle('')
   }
+
+
   function deleteArticle(index) {
     setArticles(articles.filter((article, i) => index !== i));
   }
@@ -58,11 +57,11 @@ function App() {
         </div>
       </form>
 
-
-      <ul className="list-group ">
+      <ul className="list-group  list-unstyled  ">
         {articles.map((article, index) => (
           <li key={index}>
-            {article}
+            <h5> Title : {article.title}</h5>
+            <p>State: {article.status}</p>
 
             <div className=' d-flex justify-content-end'>
               <button className='btn btn-sm btn-success' onClick={() => editArticle(index)}><i className="bi bi-pencil-square"></i></button>
