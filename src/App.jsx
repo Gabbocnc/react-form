@@ -22,21 +22,17 @@ function App() {
 
   function editTitle(index) {
     const newTitle = prompt('Enter new title', articles[index].title);
-    if (newTitle) {
-      const updatedArticles = [...articles];
-      updatedArticles[index].title = newTitle;
-      setArticles(updatedArticles);
-    }
+    const updatedArticles = [...articles];
+    updatedArticles[index].title = newTitle;
+    setArticles(updatedArticles);
+
   }
 
   function changeStatus(index) {
     const newStatus = prompt('Enter new status', articles[index].status)
-
-    if (newStatus) {
-      const updateStatus = [...articles];
-      updateStatus[index].status = newStatus;
-      setArticles(updateStatus)
-    }
+    const updateStatus = [...articles];
+    updateStatus[index].status = newStatus;
+    setArticles(updateStatus)
   }
 
 
